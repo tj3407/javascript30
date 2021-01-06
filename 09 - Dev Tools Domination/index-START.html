@@ -18,28 +18,50 @@
     }
 
     // Regular
+    console.log("hello world");
 
     // Interpolated
+    console.log("Hello %s", "guest");
 
     // Styled
+    console.log("%c Hello world", "font-size: 16px");
 
     // warning!
+    console.warn("Warning world");
 
     // Error :|
+    console.error("Error world");
 
     // Info
+    console.info("Info world");
 
     // Testing
+    console.assert(2 === 1, "This is wrong!");
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    const p = document.querySelector("p");
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group("dogs");
+      console.log(dog.name);
+      console.log(dog.age);
+      console.groupEnd("dogs");
+    })
 
     // counting
+    console.count("break");
 
     // timing
+    console.time("fetch time");
+    setTimeout(() => {
+      console.log("Ending");
+      console.timeEnd("fetch time");
+    }, 1000);
 
   </script>
 </body>
