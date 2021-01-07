@@ -96,6 +96,42 @@
   </div>
 
 <script>
+  const inputs = document.querySelectorAll("input");
+  let firstIndex = null;
+  let secondIndex = null;
+  let firstClick = true;
+  let shiftKeyPressed = false;
+
+  function startClick(index) {
+    if (firstClick) {
+      firstIndex = index;
+      document.addEventListener("keydown", handleShiftKeyPress);
+      document.addEventListener("keyup", handleShiftKeyPress);
+      firstClick = false;
+    } else {
+      if (shiftKeyPressed) {
+        secondIndex = index;
+        inputs.forEach((input, index) => {
+          if (index > firstIndex && index < secondIndex) {
+            input.checked = true;
+          }
+        });
+        shiftKeyPressed = !shiftKeyPressed;
+        firstClick = true;
+      } else {
+        firstIndex = index;
+        firstClick = false;
+      }
+    }
+  };
+
+  function handleShiftKeyPress(e) {
+    if (e.keyCode === 16) {
+      shiftKeyPressed = !shiftKeyPressed;
+    }
+  };
+
+  inputs.forEach((input, index) => input.addEventListener("click", () => startClick(index)));
 </script>
 </body>
 </html>
