@@ -7,6 +7,17 @@
 </head>
 <body>
 <script>
+  const secretCode = "tremor";
+  const pressedKeys = [];
+
+  window.addEventListener('keyup', (e) => {
+    pressedKeys.push(e.key);
+    pressedKeys.splice(-secretCode.length-1, pressedKeys.length - secretCode.length);
+
+    if (pressedKeys.join("") === secretCode) {
+      cornify_add();
+    }
+  })
 </script>
 </body>
 </html>
